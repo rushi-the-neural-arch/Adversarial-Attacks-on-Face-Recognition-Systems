@@ -5,8 +5,7 @@ from math import hypot
 
 # Load the required images
 bd_image = cv2.imread("BD.jpeg")
-frame = cv2.imread("TestSet_cropped/P1/s01_11_bad.jpg")
-frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+frame = cv2.imread("TestSet_cropped/P1/s01_11.jpg")
 
 height, width, _ = frame.shape
 nose_mask = np.zeros((height, width), np.uint8)
@@ -32,6 +31,7 @@ for facial_landmarks in result.multi_face_landmarks:
     nose_width = int(hypot(left_eye_point[0] - right_eye_point[0],
                             left_eye_point[1] - right_eye_point[1]))
 
+    nose_width = 50
     nose_height = int(nose_width )   # 0.37 comes from H/W of the Image (373/100) - 1.73 is a random no                       
 
     top_left = (int(center_nose[0] - nose_width / 2),
@@ -51,17 +51,14 @@ for facial_landmarks in result.multi_face_landmarks:
     nose_area_no_nose = cv2.bitwise_and(nose_area, nose_area, mask=nose_mask)
 
     final_nose = cv2.add(nose_area_no_nose, bd_pic)
-    final_nose = cv2.cvtColor(final_nose, cv2.COLOR_BGR2RGB)
 
     frame[top_left[1]: top_left[1] + nose_height,
                 top_left[0]: top_left[0] + nose_width] = final_nose
-
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     print("Nose Shape - ", final_nose.shape)
 
     cv2.imshow("Final Nose", final_nose)
 
 cv2.imshow("Frame", frame)
-cv2.imwrite("MediaPipe-ToughImage.png", frame)
+cv2.imwrite("MediaPipe-1x1.png", frame)
 key = cv2.waitKey(0)
