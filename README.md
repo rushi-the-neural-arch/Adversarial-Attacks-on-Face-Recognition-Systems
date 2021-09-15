@@ -9,8 +9,9 @@ TODO 2 - Discover different types of white box attacks like FSGM to spoof highly
 
 60x60 works best
 
-Datasets - https://www.face-rec.org/databases/
+Face Datasets 
 
-        - https://analyticsindiamag.com/10-face-datasets-to-start-facial-recognition-projects/ 
-        - https://www.face-rec.org/databases/
+   - https://www.face-rec.org/databases/
+   - https://analyticsindiamag.com/10-face-datasets-to-start-facial-recognition-projects/ 
+   - https://www.face-rec.org/databases/
 
